@@ -92,15 +92,16 @@
     /* ====== GALERI ====== */
    <section id="galeri">
   <h2>Galeri</h2>
+
   <div class="button-container">
-    <button onclick="tampilkanGaleri('foto')">Foto</button>
-    <button onclick="tampilkanGaleri('video')">Video</button>
+    <button class="toggle-btn" onclick="tampilkanGaleri('foto')">📸 Foto</button>
+    <button class="toggle-btn" onclick="tampilkanGaleri('video')">🎥 Video</button>
   </div>
 
+  <!-- Kontainer Galeri -->
   <div id="photo-gallery" class="gallery-grid"></div>
   <div id="video-gallery" class="gallery-grid" style="display:none;"></div>
 </section>
-
     /* ====== LIGHTBOX ====== */
     .lightbox {
       display: none;
