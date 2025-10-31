@@ -62,27 +62,20 @@ section h2 {
 }
 
 /* ===== GALERI ===== */
-.galeri-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.galeri-container.foto img {
+.gallery-photo, .gallery-video {
   width: 100%;
+  max-width: 280px;       /* Batas lebar maksimum */
+  height: 200px;           /* Tinggi seragam */
   border-radius: 10px;
+  object-fit: cover;        /* Supaya tidak gepeng */
   cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.galeri-container.foto img:hover {
+.gallery-photo:hover, .gallery-video:hover {
   transform: scale(1.05);
-}
-
-.galeri-container.video video {
-  width: 100%;
-  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* ===== LIGHTBOX ===== */
@@ -156,4 +149,11 @@ footer {
   text-align: center;
   padding: 15px 0;
   margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .gallery-photo, .gallery-video {
+    max-width: 100%;
+    height: 180px;
+  }
 }
