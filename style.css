@@ -22,8 +22,8 @@ header {
 .logo {
   width: 120px;
   height: 120px;
-  object-fit: cover; /* agar proporsional */
-  border-radius: 50%; /* bulat */
+  object-fit: cover;
+  border-radius: 50%;
   border: 3px solid white;
   box-shadow: 0 0 8px rgba(0,0,0,0.3);
 }
@@ -61,6 +61,7 @@ section h2 {
   padding-bottom: 5px;
 }
 
+/* ===== GALERI ===== */
 .galeri-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -68,7 +69,6 @@ section h2 {
   margin-top: 15px;
 }
 
-/* Foto */
 .galeri-container.foto img {
   width: 100%;
   border-radius: 10px;
@@ -80,7 +80,6 @@ section h2 {
   transform: scale(1.05);
 }
 
-/* Video */
 .galeri-container.video video {
   width: 100%;
   border-radius: 10px;
@@ -114,6 +113,40 @@ section h2 {
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* ===== UPLOAD OTOMATIS GALERI ===== */
+.upload-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.upload-container input {
+  display: none;
+}
+
+.upload-label {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-weight: bold;
+}
+
+.upload-label:hover {
+  background-color: #0056b3;
+}
+
+.upload-preview img,
+.upload-preview video {
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 /* ===== FOOTER ===== */
