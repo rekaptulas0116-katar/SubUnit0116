@@ -3,6 +3,7 @@ body {
   margin: 0;
   background-color: #f8f9fa;
   color: #333;
+  overflow-x: hidden;
 }
 
 /* ===== HEADER ===== */
@@ -62,18 +63,56 @@ section h2 {
 }
 
 /* ===== GALERI ===== */
-.gallery-photo, .gallery-video {
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gallery-photo,
+.gallery-video {
   width: 100%;
-  max-width: 280px;       /* Batas lebar maksimum */
-  height: 200px;           /* Tinggi seragam */
+  max-width: 260px;
+  height: 180px;
   border-radius: 10px;
-  object-fit: cover;        /* Supaya tidak gepeng */
+  object-fit: cover;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+  /* animasi muncul */
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
 }
 
-.gallery-photo:hover, .gallery-video:hover {
+/* Delay bertahap supaya muncul satu per satu */
+.gallery-photo:nth-child(1),
+.gallery-video:nth-child(1) { animation-delay: 0.1s; }
+.gallery-photo:nth-child(2),
+.gallery-video:nth-child(2) { animation-delay: 0.2s; }
+.gallery-photo:nth-child(3),
+.gallery-video:nth-child(3) { animation-delay: 0.3s; }
+.gallery-photo:nth-child(4),
+.gallery-video:nth-child(4) { animation-delay: 0.4s; }
+.gallery-photo:nth-child(5),
+.gallery-video:nth-child(5) { animation-delay: 0.5s; }
+
+.gallery-photo:hover,
+.gallery-video:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
@@ -140,6 +179,7 @@ section h2 {
   border-radius: 8px;
   margin: 10px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  animation: fadeIn 0.8s ease forwards;
 }
 
 /* ===== FOOTER ===== */
@@ -151,9 +191,11 @@ footer {
   margin-top: 20px;
 }
 
+/* ===== RESPONSIF ===== */
 @media (max-width: 600px) {
-  .gallery-photo, .gallery-video {
+  .gallery-photo,
+  .gallery-video {
     max-width: 100%;
-    height: 180px;
+    height: 160px;
   }
 }
