@@ -52,7 +52,7 @@ nav a:hover {
 /* ===== SECTIONS ===== */
 section {
   padding: 25px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
@@ -64,13 +64,6 @@ section h2 {
 }
 
 /* ===== GALERI ===== */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 15px;
-  justify-items: center;
-  margin-top: 20px;
-}
 
 /* Tombol Galeri */
 .button-container {
@@ -79,7 +72,7 @@ section h2 {
   margin-bottom: 25px;
 }
 
-.toggle-btn {
+.button-container button {
   background-color: #007bff;
   color: white;
   border: none;
@@ -91,22 +84,32 @@ section h2 {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.toggle-btn:hover {
+.button-container button:hover {
   background-color: #0056b3;
   transform: scale(1.05);
 }
 
-.toggle-btn:active {
+.button-container button:active {
   background-color: #004a99;
   transform: scale(0.98);
+}
+
+/* Galeri Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 /* Gambar & video di galeri */
 .gallery-photo,
 .gallery-video {
   width: 100%;
-  max-width: 260px;
-  aspect-ratio: 4 / 3;  /* menjaga proporsi */
+  max-width: 280px;
+  aspect-ratio: 4 / 3;          /* menjaga proporsi */
   border-radius: 10px;
   object-fit: cover;
   cursor: pointer;
@@ -224,10 +227,13 @@ footer {
 
 /* ===== RESPONSIF ===== */
 @media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
   .gallery-photo,
   .gallery-video {
     max-width: 100%;
     height: auto;
-    aspect-ratio: 4 / 3;
   }
 }
