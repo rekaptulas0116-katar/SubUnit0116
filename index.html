@@ -90,35 +90,15 @@
     }
 
     /* ====== GALERI ====== */
-    .galeri-buttons {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .galeri-buttons button {
-      background: #ffd700;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .galeri-buttons button:hover {
-      background: #e0b800;
-    }
-
-    .galeri-container {
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 15px;
       justify-items: center;
+      margin-top: 20px;
     }
 
-    .galeri-container img, .galeri-container video {
+    .gallery-photo, .gallery-video {
       width: 100%;
       height: 200px;
       border-radius: 10px;
@@ -127,7 +107,7 @@
       transition: transform 0.3s;
     }
 
-    .galeri-container img:hover, .galeri-container video:hover {
+    .gallery-photo:hover, .gallery-video:hover {
       transform: scale(1.05);
     }
 
@@ -203,7 +183,6 @@
       text-decoration: underline;
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
       header {
         padding: 1rem;
@@ -235,10 +214,8 @@
 
   <section id="tentang">
     <h2>Tentang Kami</h2>
-    <p>
-      Karang Taruna Rekaptulas merupakan wadah bagi generasi muda desa untuk
-      mengembangkan potensi, kreativitas, dan semangat kebersamaan dalam membangun masyarakat.
-    </p>
+    <p>Karang Taruna Rekaptulas merupakan wadah bagi generasi muda desa untuk
+      mengembangkan potensi, kreativitas, dan semangat kebersamaan dalam membangun masyarakat.</p>
   </section>
 
   <section id="alamat">
@@ -249,25 +226,18 @@
   <section id="kontak">
     <h2>Kontak</h2>
     <ul>
-      <li>
-        <img src="icons/email.png" class="icon-sosmed" alt="Email">
-        Email: <a href="mailto:rekaptulas0116@gmail.com">rekaptulas0116@gmail.com</a>
-      </li>
-      <li>
-        <img src="icons/whatsapp.png" class="icon-sosmed" alt="WhatsApp">
-        WhatsApp: <a href="https://wa.me/6281281948632" target="_blank">0812-8194-8632</a>
-      </li>
-      <li>
-        <img src="icons/instagram.png" class="icon-sosmed" alt="Instagram">
-        Instagram: <a href="https://instagram.com/rekaptulas_id" target="_blank">@rekaptulas_id</a>
-      </li>
-      <li>
-        <img src="icons/tiktok.png" class="icon-sosmed" alt="TikTok">
-        TikTok: <a href="https://tiktok.com/@rekaptulas_id" target="_blank">@rekaptulas_id</a>
-      </li>
+      <li><img src="icons/email.png" class="icon-sosmed" alt="Email"> Email: 
+        <a href="mailto:rekaptulas0116@gmail.com">rekaptulas0116@gmail.com</a></li>
+      <li><img src="icons/whatsapp.png" class="icon-sosmed" alt="WhatsApp"> WhatsApp: 
+        <a href="https://wa.me/6281281948632" target="_blank">0812-8194-8632</a></li>
+      <li><img src="icons/instagram.png" class="icon-sosmed" alt="Instagram"> Instagram: 
+        <a href="https://instagram.com/rekaptulas_id" target="_blank">@rekaptulas_id</a></li>
+      <li><img src="icons/tiktok.png" class="icon-sosmed" alt="TikTok"> TikTok: 
+        <a href="https://tiktok.com/@rekaptulas_id" target="_blank">@rekaptulas_id</a></li>
     </ul>
   </section>
 
+  <!-- 🔥 Bagian Galeri Otomatis -->
   <section id="galeri">
     <h2>Galeri Kegiatan</h2>
 
@@ -276,30 +246,8 @@
       <button onclick="tampilkanGaleri('video')">🎥 Video</button>
     </div>
 
-    <div class="galeri-container foto" id="galeri-foto">
-      <img src="images/IMG_3280.JPG" alt="Kegiatan 1">
-      <img src="images/IMG_3416.JPG" alt="Kegiatan 2">
-      <img src="images/IMG_3186.JPG" alt="Kegiatan 3">
-      <img src="images/IMG_3288.JPG" alt="Kegiatan 4">
-      <img src="images/IMG_3444.JPG" alt="Kegiatan 5">
-      <img src="images/IMG_3453.JPG" alt="Kegiatan 6">
-      <img src="images/IMG_3455.JPG" alt="kegiatan 7">
-      <img src="images/IMG_3358.JPG" alt="kegiatan 8">
-      <img src="images/IMG_3249.JPG" alt="kegiatan 9">
-    </div>
-
-    <div class="galeri-container video" id="galeri-video" style="display:none;">
-      <video controls>
-        <source src="videos/MVI_3114.MOV" type="video/mp4">
-      </video>
-      <video controls>
-        <source src="videos/MVI_3118.MOV" type="video/mp4">
-      </video>
-      <video controls>
-        <source src="videos"
-      </video>  
-      </video>
-    </div>
+    <div id="photo-gallery" class="gallery-grid"></div>
+    <div id="video-gallery" class="gallery-grid" style="display:none;"></div>
   </section>
 
   <footer>
@@ -312,32 +260,14 @@
     <img class="lightbox-content" id="lightbox-img" alt="Foto diperbesar">
   </div>
 
+  <!-- Script galeri otomatis -->
+  <script src="script.js"></script>
+
   <script>
-    // Lightbox
-    const images = document.querySelectorAll('.galeri-container.foto img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.querySelector('.close');
-
-    images.forEach(img => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-      });
-    });
-
-    closeBtn.addEventListener('click', () => {
-      lightbox.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === lightbox) lightbox.style.display = 'none';
-    });
-
     // Tombol Foto / Video
     function tampilkanGaleri(tipe) {
-      const foto = document.getElementById('galeri-foto');
-      const video = document.getElementById('galeri-video');
+      const foto = document.getElementById('photo-gallery');
+      const video = document.getElementById('video-gallery');
 
       if (tipe === 'foto') {
         foto.style.display = 'grid';
