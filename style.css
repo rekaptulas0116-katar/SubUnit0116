@@ -65,7 +65,14 @@ section h2 {
 
 /* ===== GALERI ===== */
 .gallery-grid {
- /* Tombol Galeri */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+/* Tombol Galeri */
 .button-container {
   text-align: center;
   margin-top: 15px;
@@ -93,14 +100,13 @@ section h2 {
   background-color: #004a99;
   transform: scale(0.98);
 }
-}
 
 /* Gambar & video di galeri */
 .gallery-photo,
 .gallery-video {
   width: 100%;
   max-width: 260px;
-  aspect-ratio: 4 / 3;          /* menjaga proporsi */
+  aspect-ratio: 4 / 3;  /* menjaga proporsi */
   border-radius: 10px;
   object-fit: cover;
   cursor: pointer;
